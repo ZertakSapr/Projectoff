@@ -1,0 +1,53 @@
+@startuml
+title GPS Track Drawer - Activity Diagram
+
+|Main Program|
+start
+:Initialize Application;
+:Create Main Form;
+
+|Form Initialization|
+:Initialize UI Components;
+:Create Player Buttons;
+:Load Test Data (if enabled);
+
+|Data Loading|
+if (Use Test Data?) then (yes)
+  :Load Test Scenario;
+else (no)
+  :Load Track File;
+endif
+
+|Analysis|
+:Calculate Field Boundaries;
+:Load Goal Positions;
+:Detect Shots;
+:Detect Tackles;
+:Detect Dribbles;
+:Detect Interceptions;
+:Analyze All Passes;
+
+|Statistics|
+:Calculate Player Stats;
+:Calculate Team Stats;
+:Calculate Zone Stats;
+
+|Display|
+:Show Overall Stats;
+:Show Player Stats;
+:Show Dribbling Stats;
+:Show Interception Stats;
+
+|User Interaction|
+while (Application Running?) is (yes)
+  if (Player Button Clicked?) then (yes)
+    :Show Player Stats;
+    :Generate Player Advice;
+  endif
+  if (Test Scenario Changed?) then (yes)
+    :Reload Data;
+  endif
+endwhile (no)
+
+stop
+@enduml 

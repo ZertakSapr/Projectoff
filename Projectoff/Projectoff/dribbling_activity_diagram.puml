@@ -1,0 +1,62 @@
+@startuml
+title GPS Track Drawer - Dribbling Statistics Activity Diagram
+
+|Dribbling Detection|
+start
+:Initialize Dribble Detection;
+
+|Player Movement Analysis|
+while (Process Each Player?) is (yes)
+  :Get Player Coordinates;
+  :Calculate Player Speed;
+  
+  |Dribble Detection Logic|
+  if (Speed > MIN_DRIBBLE_SPEED?) then (yes)
+    if (Speed < MAX_DRIBBLE_SPEED?) then (yes)
+      if (Distance > MIN_DRIBBLE_DISTANCE?) then (yes)
+        if (Duration > MIN_DRIBBLE_DURATION?) then (yes)
+          :Start New Dribble Sequence;
+          
+          |Dribble Tracking|
+          while (Dribble Active?) is (yes)
+            :Track Position;
+            :Track Speed;
+            :Calculate Ball Control;
+            :Check for Dispossession;
+            
+            if (Dispossessed?) then (yes)
+              :Mark Dribble as Dispossessed;
+              break;
+            endif
+          endwhile (no)
+          
+          :Finalize Dribble;
+          :Update Dribbling Stats;
+        endif
+      endif
+    endif
+  endif
+endwhile (no)
+
+|Statistics Calculation|
+:Calculate Total Dribbles;
+:Calculate Successful Dribbles;
+:Calculate Success Rate;
+:Calculate Total Distance;
+:Calculate Average Distance;
+:Calculate Max Speed;
+:Calculate Average Speed;
+:Find Longest Dribbles;
+:Find Fastest Dribbles;
+
+|Quality Assessment|
+:Calculate Ball Control Quality;
+:Calculate Speed Control Quality;
+:Calculate Overall Dribble Quality;
+
+|Display Results|
+:Show Dribbling Stats;
+:Generate Dribbling Advice;
+
+stop
+@enduml 
